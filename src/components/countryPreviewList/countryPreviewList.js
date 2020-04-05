@@ -21,7 +21,7 @@ const CountryPreviewList = () =>{
     return(
         <CountryPreviewListWrapper>
             {countryList.map(country=>(
-                <CountryPreview name={country}/>
+                <CountryPreview name={country} key={country}/>
             ))}
         </CountryPreviewListWrapper>
     );

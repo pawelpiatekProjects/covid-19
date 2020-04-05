@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import ReactCountryFlag from 'react-country-flag';
 import * as variables from '../../assets/styles/variables';
 import axios from 'axios';
+import CountryDetails from './countryDetails/countryDetails';
 
 const CountryPreviewWrapper = styled.div`
+
+`;
+
+const Intro = styled.div`
 background: ${variables.primaryGrey};
 padding: 1rem;
 margin: 1rem;
@@ -12,10 +17,6 @@ margin: 1rem;
     cursor: pointer;
     background: ${variables.primaryGreyHover};
     }
-`;
-
-const Intro = styled.div`
-
 `;
 
 const CountryFlag = styled.div`
@@ -33,12 +34,22 @@ const Details = styled.div`
 const CountryPreview = ({name}) => {
 
     const[countryCases, setCountryCases] = useState([]);
+    const [all, setAll] = useState(null);
+    const [deaths, setDeaths] = useState(null);
+    const [recovered, setRecovered] = useState(null);
     const[isDetails, setIsDetails] = useState(false);
     useEffect(()=>{
         axios.get(`https://pomber.github.io/covid19/timeseries.json`)
             .then(response=>{
                 setCountryCases(response.data[name])
+                return response.data[name];
             })
+            .then(country=>{
+                // console.log(country[country.length-1].confirmed)
+                setAll(country[country.length-1].confirmed);
+                setDeaths(country[country.length-1].deaths)
+                setRecovered(country[country.length-1].recovered);
+            });
     },[])
     return(
             <CountryPreviewWrapper onClick={()=>setIsDetails(!isDetails)}>
@@ -51,11 +62,7 @@ const CountryPreview = ({name}) => {
                 {
                     isDetails ? (
                         <Details>
-                            {countryCases.map(country=>(
-                                <div>
-                                    <p>{country.date}</p>
-                                </div>
-                            ))}
+                            <CountryDetails confirmed={all} deaths={deaths} recovered={recovered}/>
                         </Details>
                     ) : null
                 }
