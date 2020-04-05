@@ -1,20 +1,13 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import React from 'react';
 import GlobalStyle from './assets/styles/globalStyle';
+import CountryPreviewList from './components/countryPreviewList/countryPreviewList';
 
 function App() {
-  const [polandCases, setPolandCases] = useState([]);
-  useEffect(()=>{
 
-    axios.get(`https://pomber.github.io/covid19/timeseries.json`)
-        .then(response=>{
-          setPolandCases(response.data['Poland']);
-        })
-
-  },[])
   return (
     <div className="App">
       <GlobalStyle/>
+      <CountryPreviewList/>
     </div>
   );
 }
