@@ -13,6 +13,9 @@ height: calc(100vh - 12rem);
 
 const MainCountryWrapper = styled.div`
 grid-column: 1/span 1;
+background: ${variables.white};
+margin: 0 2rem;
+padding: 2rem;
 `;
 
 const CountryList = styled.div`

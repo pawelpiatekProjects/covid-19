@@ -8,8 +8,14 @@ margin: 1rem auto;
 `;
 
 const Paragraph = styled.p`
-margin: 0;
+margin: 0 auto .5rem auto;
 color: ${variables.white};
+font-size: 1.4rem;
+
+
+span{
+font-weight: 500;
+}
 `;
 
 const CountryDetails = ({confirmed, deaths, recovered}) =>(

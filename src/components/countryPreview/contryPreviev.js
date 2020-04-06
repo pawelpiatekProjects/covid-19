@@ -4,6 +4,8 @@ import ReactCountryFlag from 'react-country-flag';
 import * as variables from '../../assets/styles/variables';
 import axios from 'axios';
 import CountryDetails from './countryDetails/countryDetails';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 const CountryPreviewWrapper = styled.div`
 
@@ -14,14 +16,18 @@ background: ${variables.white};
 box-shadow: 0px 4px 5px -6px rgba(0,0,0,0.75);
 padding: 1rem;
 margin: 2px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
     &:hover{
     cursor: pointer;
    
     }
 `;
 
-const CountryFlag = styled.div`
-
+const Caret = styled(FontAwesomeIcon)`
+  font-size: 1.5rem;
 `;
 
 const CountryName = styled.p`
@@ -54,14 +60,15 @@ const CountryPreview = ({name}) => {
                 setDeaths(country[country.length-1].deaths)
                 setRecovered(country[country.length-1].recovered);
             });
-    },[])
+    },[]);
+
+    let activeCaret = isDetails ? faCaretDown : faCaretRight;
     return(
             <CountryPreviewWrapper onClick={()=>setIsDetails(!isDetails)}>
                 <Intro>
-                    <CountryFlag>
-                        {/*<ReactCountryFlag countryCode="" svg aria-label="United States" clasName="emojiFlag"/>*/}
-                    </CountryFlag>
                     <CountryName>{name}</CountryName>
+
+                    <Caret icon={activeCaret}/>
                 </Intro>
                 {
                     isDetails ? (
