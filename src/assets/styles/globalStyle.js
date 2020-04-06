@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import * as variables from '../styles/variables';
 
 // global style component which contains global styles for this app
 const GlobalStyle = createGlobalStyle`
@@ -19,8 +20,10 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    padding: 8rem 6.5rem;
+    padding: 8rem 6.5rem 4rem 6.5rem;
     font-family: 'Montserrat';
+    
+    background-color: ${variables.primaryGrey};
     
     @media(max-width: 700px){
     padding: 4rem 3rem;

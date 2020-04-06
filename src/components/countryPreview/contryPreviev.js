@@ -10,12 +10,13 @@ const CountryPreviewWrapper = styled.div`
 `;
 
 const Intro = styled.div`
-background: ${variables.primaryGrey};
+background: ${variables.white};
+box-shadow: 0px 4px 5px -6px rgba(0,0,0,0.75);
 padding: 1rem;
-margin: 1rem;
+margin: 2px;
     &:hover{
     cursor: pointer;
-    background: ${variables.primaryGreyHover};
+   
     }
 `;
 
@@ -28,7 +29,10 @@ const CountryName = styled.p`
 `;
 
 const Details = styled.div`
-
+background: ${variables.primaryBlue};
+width: 90%;
+margin: 0 auto;
+padding: 1rem;
 `;
 
 const CountryPreview = ({name}) => {

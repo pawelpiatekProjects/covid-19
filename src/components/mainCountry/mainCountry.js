@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -10,12 +10,14 @@ const MainCountryHeader = styled.h1`
 
 `;
 
-const MainCountry = () => {
-    const[mainCountryCases, setMainCantryCases] = useState([]);
 
+const MainCountry = ({data}) => {
+
+console.log(data)
     return (
         <MainCountryWrapper>
             <MainCountryHeader>Przypadki w Polsce</MainCountryHeader>
+
         </MainCountryWrapper>
     );
 };
