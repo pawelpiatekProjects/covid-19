@@ -31,7 +31,7 @@ const Caret = styled(FontAwesomeIcon)`
 `;
 
 const CountryName = styled.p`
-
+font-size: 1.4rem;
 `;
 
 const Details = styled.div`

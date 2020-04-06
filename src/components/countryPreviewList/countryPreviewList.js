@@ -18,6 +18,15 @@ margin: 0 2rem;
 padding: 2rem;
 `;
 
+const ListHeading = styled.h1`
+font-weight: 400;
+font-size: 2rem;
+border-bottom: 2px solid #eee;
+padding-bottom: 1rem;
+color: ${variables.primaryBlue};
+font-weight: 500;
+`;
+
 const CountryList = styled.div`
 grid-column: 2/ span 1;
 height: 100%;
@@ -36,17 +45,19 @@ const CountryPreviewList = () => {
         axios.get(`https://pomber.github.io/covid19/timeseries.json`)
             .then(response => {
                 const casesInMainCountry = response.data['Poland']
-                setMainCountryData(casesInMainCountry[casesInMainCountry.length - 1]);
+                setMainCountryData(casesInMainCountry[casesInMainCountry.length-1]);
                 const keys = Object.keys(response.data)
                 setCountryList(keys)
             })
     }, [])
     return (
+
         <CountryPreviewListWrapper>
             <MainCountryWrapper>
-                <MainCountry data={mainCountryData}/>
+                <MainCountry data={mainCountryData} />
             </MainCountryWrapper>
             <CountryList>
+                <ListHeading>Przypadki na świecie</ListHeading>
                 {countryList.map(country => (
                     <CountryPreview name={country} key={country}/>
                 ))}

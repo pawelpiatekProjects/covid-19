@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../../assets/styles/variables';
+import ColorSpan from '../../../assets/reusable/components/colorSpan';
 
 const CountryDetailsWrapper = styled.div`
 width: 80%;
@@ -20,9 +21,9 @@ font-weight: 500;
 
 const CountryDetails = ({confirmed, deaths, recovered}) =>(
     <CountryDetailsWrapper>
-        <Paragraph><span>Potwierdzone przypadki: </span>{confirmed}</Paragraph>
-        <Paragraph><span>Przypadki śmiertelne: </span>{deaths}</Paragraph>
-        <Paragraph><span>Wyleczeni zakażeni: </span>{recovered}</Paragraph>
+        <Paragraph><span>Potwierdzone przypadki: </span><ColorSpan color={variables.white}>{confirmed}</ColorSpan></Paragraph>
+        <Paragraph><span>Przypadki śmiertelne: </span><ColorSpan color={variables.red1}>{deaths}</ColorSpan></Paragraph>
+        <Paragraph><span>Wyleczeni zakażeni: </span><ColorSpan color={variables.green1}>{recovered}</ColorSpan></Paragraph>
     </CountryDetailsWrapper>
 );
 
