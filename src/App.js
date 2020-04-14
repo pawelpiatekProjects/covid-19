@@ -1,7 +1,8 @@
 import React from 'react';
 import GlobalStyle from './assets/styles/globalStyle';
-import CountryPreviewList from './components/countryPreviewList/countryPreviewList';
+import MainPage from './pages/main';
 import GoogleFontLoader from 'react-google-font-loader';
+import TopBar from './components/topBar/topBar';
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
                 subsets={['latin']}
             />
             <GlobalStyle/>
-            <CountryPreviewList/>
+            <TopBar/>
+            <MainPage/>
         </div>
     );
 }

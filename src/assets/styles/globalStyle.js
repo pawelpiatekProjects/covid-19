@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     margin: 0;
-    padding: 8rem 6.5rem 4rem 6.5rem;
+    padding: 0rem ;
     font-family: 'Montserrat';
     
     background-color: ${variables.primaryGrey};
