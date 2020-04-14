@@ -13,7 +13,7 @@ const InfoWrapper = styled.div`
 
 const Cell = styled.div`
   background: ${variables.white};
-  grid-column: ${props=>props.start}/${props=>props.end};
+  grid-column: ${props => props.start}/${props => props.end};
   padding: 2rem;
 `;
 
@@ -36,51 +36,53 @@ margin-top: 2rem;
 const Percent = styled.p`
 font-size: 2rem;
 font-weight: 700;
-color:${props=>props.color};
+color:${props => props.color};
 margin: 0;
 padding: 1rem 0;
 `;
 
-const Info = ({data}) =>{
+const Info = ({data}) => {
 
-    return(
-        <InfoWrapper>
-            <Cell start={1} end={7}>
-                <CellHeader>Liczba zakażonych w Polsce:</CellHeader>
-                <Case>{data.confirmed}</Case>
-                <Percent color={data.confirmedIncrease <0 ? variables.red1 : variables.green1}>
-                    {data.confirmedIncrease <0 ? '-' : ''}{data.confirmedIncrease}%
-                </Percent>
-            </Cell>
-            <Cell start={7} end={-1}>
-                <CellHeader>Aktualnie chorujący:</CellHeader>
-                <Case>{data.activeCases}</Case>
-                <Percent color={data.activeCasesIncrease <0 ? variables.red1 : variables.green1}>
-                    {data.activeCasesIncrease <0 ? '-' : ''}{data.activeCasesIncrease}%
-                </Percent>
-            </Cell>
-            <Cell start={1} end={5}>
-                <CellHeader>Wyleczeni:</CellHeader>
-                <Case>{data.recovered}</Case>
-                <Percent color={data.recoveredIncrease <0 ? variables.red1 : variables.green1}>
-                    {data.recoveredIncrease <0 ? '-' : ''}{data.recoveredIncrease}%
-                </Percent>
-            </Cell>
-            <Cell start={5} end={9}>
-                <CellHeader>Łączna liczba zbonów:</CellHeader>
-                <Case>{data.deaths}</Case>
-                <Percent color={data.deathIncrease <0 ? variables.red1 : variables.green1}>
-                    {data.deathIncrease <0 ? '-' : ''}{data.deathIncrease}%
-                </Percent>
-            </Cell>
-            <Cell start={9} end={-1}>
-                <CellHeader>Śmiertelność:</CellHeader>
-                <Case>{data.rate}%</Case>
-                <Percent color={data.rateIncrease <0 ? variables.red1 : variables.green1}>
-                    {data.rateIncrease <0 ? '-' : ''}{data.rateIncrease}%
-                </Percent>
-            </Cell>
-        </InfoWrapper>
+    return (
+        <>
+            <InfoWrapper>
+                <Cell start={1} end={7}>
+                    <CellHeader>Liczba zakażonych w Polsce:</CellHeader>
+                    <Case>{data.confirmed}</Case>
+                    <Percent color={data.confirmedIncrease < 0 ? variables.red1 : variables.green1}>
+                        {data.confirmedIncrease < 0 ? '-' : ''}{data.confirmedIncrease}%
+                    </Percent>
+                </Cell>
+                <Cell start={7} end={-1}>
+                    <CellHeader>Aktualnie chorujący:</CellHeader>
+                    <Case>{data.activeCases}</Case>
+                    <Percent color={data.activeCasesIncrease < 0 ? variables.red1 : variables.green1}>
+                        {data.activeCasesIncrease < 0 ? '-' : ''}{data.activeCasesIncrease}%
+                    </Percent>
+                </Cell>
+                <Cell start={1} end={5}>
+                    <CellHeader>Wyleczeni:</CellHeader>
+                    <Case>{data.recovered}</Case>
+                    <Percent color={data.recoveredIncrease < 0 ? variables.red1 : variables.green1}>
+                        {data.recoveredIncrease < 0 ? '-' : ''}{data.recoveredIncrease}%
+                    </Percent>
+                </Cell>
+                <Cell start={5} end={9}>
+                    <CellHeader>Łączna liczba zbonów:</CellHeader>
+                    <Case>{data.deaths}</Case>
+                    <Percent color={data.deathIncrease < 0 ? variables.red1 : variables.green1}>
+                        {data.deathIncrease < 0 ? '-' : ''}{data.deathIncrease}%
+                    </Percent>
+                </Cell>
+                <Cell start={9} end={-1}>
+                    <CellHeader>Śmiertelność:</CellHeader>
+                    <Case>{data.rate}%</Case>
+                    <Percent color={data.rateIncrease < 0 ? variables.red1 : variables.green1}>
+                        {data.rateIncrease < 0 ? '-' : ''}{data.rateIncrease}%
+                    </Percent>
+                </Cell>
+            </InfoWrapper>
+        </>
     )
 };
 
