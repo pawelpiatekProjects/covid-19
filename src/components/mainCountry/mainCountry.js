@@ -2,12 +2,12 @@ import React, {useState, useEffect} from 'react';
 import {APIURL} from '../../assets/APIURL';
 import styled from 'styled-components';
 import axios from 'axios';
-import * as variables from '../../assets/styles/variables';
 import DailyConfirmed from '../charts/dailyConfirmed';
 import Hero from '../../assets/reusable/components/hero';
 import Info from './Info/Info';
 import AllConfirmed from "../charts/allConfirmed";
-// import AllConfirmed from "../charts/allConfirmed";
+import ActiveCases from '../charts/activeCases';
+
 
 
 const MainCountryWrapper = styled.div`
@@ -15,49 +15,21 @@ width: 80%;
 margin: 5rem auto;
 `;
 
-const Intro = styled.div`
-
-`;
 
 const MainCountryHeader = styled.h1`
 font-weight: 400;
 font-size: 2.5rem;
 `;
 
-const Cases = styled.div`
-margin: 6rem 0 0 3rem;
-`;
 
-const RateContainer = styled.div`
-
-`;
-
-const Paragraph = styled.p`
-font-size: 1.6rem;
-
-span{
-font-weight: 500;
-}
-`;
-
-const ChartsWrapper = styled.div`
-margin-top: 10rem;
-  svg{
-  width: 100%;
-  }
-`;
-
-const ChartHeader = styled.h1`
-font-weight: 400;
-`;
-
-const MainCountry = ({data}) => {
+const MainCountry = () => {
 
     const [cases, setCases] = useState([]);
     const [allConfirmedChart, setAllConfirmedChart] = useState([]);
     const [date, setDate] = useState(null);
     const [introData, setIntroData] = useState({});
     const [dailyConfirmed, setDailyConfirmed] = useState([]);
+    const [activeCases, setActiveCases] = useState([]);
 
 
     const calculateIncrease = (num1, num2, precision) =>{
@@ -77,6 +49,7 @@ const MainCountry = ({data}) => {
                                 }
             });
             const dailyConfirmed = [];
+            const currentCases = [];
 
             for(let i=0; i < allConfirmedChart.length ;i++){
                 let confirmed = 0;
@@ -91,10 +64,15 @@ const MainCountry = ({data}) => {
                     date: allConfirmedChart[i].date,
                     Potwierdzone: confirmed
                 })
+                currentCases.push({
+                    date:allConfirmedChart[i].date,
+                    Chorzy: allConfirmedChart[i].confirmed - allConfirmedChart[i].recovered - allConfirmedChart[i].deaths
+                })
 
             }
 
 
+            setActiveCases(currentCases);
             setDailyConfirmed(dailyConfirmed)
 
             setAllConfirmedChart(allConfirmedChart);
@@ -139,33 +117,7 @@ const MainCountry = ({data}) => {
                 <Info data={introData}/>
                 <AllConfirmed data={allConfirmedChart}/>
                 <DailyConfirmed data={dailyConfirmed}/>
-                {/*{console.log(allConfirmedChart)}*/}
-
-                {/*Another file*/}
-                {/*<ChartsWrapper>*/}
-                {/*<ChartHeader>Liczba zachorowań w Polsce w kolejnych dniach</ChartHeader>*/}
-                {/*<ResponsiveContainer width="100%" height={400}>*/}
-                {/*<LineChart  data={cases} margin={{top: 5, right: 20, bottom: 5, left: 0}}>*/}
-                {/*<Line type="monotone" dataKey="Polska" stroke="#8884d8"/>*/}
-                {/*<CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>*/}
-                {/*<XAxis dataKey="name"/>*/}
-                {/*<YAxis/>*/}
-                {/*<Tooltip/>*/}
-                {/*</LineChart>*/}
-                {/*</ResponsiveContainer>*/}
-
-                {/*<ChartHeader>Dzienna liczba zachorowań w Polsce</ChartHeader>*/}
-                {/*<ResponsiveContainer width="100%" height={400}>*/}
-                {/*<BarChart  data={casesDaily} margin={{top: 5, right: 20, bottom: 5, left: 0}}>*/}
-                {/*<Bar type="monotone" dataKey="Polska" stroke="#8884d8"/>*/}
-                {/*<CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>*/}
-                {/*<XAxis dataKey="name"/>*/}
-                {/*<YAxis/>*/}
-                {/*<Tooltip/>*/}
-                {/*</BarChart>*/}
-                {/*</ResponsiveContainer>*/}
-
-                {/*</ChartsWrapper>*/}
+                <ActiveCases data={activeCases}/>
 
             </MainCountryWrapper>
         </>
