@@ -32,7 +32,7 @@ const AllConfirmed = ({data}) =>{
     })
     return(
         <AllConfirmedWrapper>
-            {console.log(confirmed)}
+
 
             <ChartHeader>Liczba zachorowań w Polsce w kolejnych dniach</ChartHeader>
                     <ResponsiveContainer width="100%" height={400}>

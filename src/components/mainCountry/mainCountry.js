@@ -57,6 +57,7 @@ const MainCountry = ({data}) => {
     const [allConfirmedChart, setAllConfirmedChart] = useState([]);
     const [date, setDate] = useState(null);
     const [introData, setIntroData] = useState({});
+    const [dailyConfirmed, setDailyConfirmed] = useState([]);
 
 
     const calculateIncrease = (num1, num2, precision) =>{
@@ -75,6 +76,27 @@ const MainCountry = ({data}) => {
                                     return el
                                 }
             });
+            const dailyConfirmed = [];
+
+            for(let i=0; i < allConfirmedChart.length ;i++){
+                let confirmed = 0;
+                if(i>0){
+                     confirmed = allConfirmedChart[i].confirmed - allConfirmedChart[i-1].confirmed;
+
+                }else{
+                    confirmed = allConfirmedChart[i].confirmed;
+                }
+
+                dailyConfirmed.push({
+                    date: allConfirmedChart[i].date,
+                    Potwierdzone: confirmed
+                })
+
+            }
+
+
+            setDailyConfirmed(dailyConfirmed)
+
             setAllConfirmedChart(allConfirmedChart);
             // console.log(allConfirmedChart);
             const lastDay = mainCountry[mainCountry.length-1];
@@ -116,7 +138,7 @@ const MainCountry = ({data}) => {
                 <MainCountryHeader>Statystyki z dnia: {date}</MainCountryHeader>
                 <Info data={introData}/>
                 <AllConfirmed data={allConfirmedChart}/>
-                {/*<DailyConfirmed/>*/}
+                <DailyConfirmed data={dailyConfirmed}/>
                 {/*{console.log(allConfirmedChart)}*/}
 
                 {/*Another file*/}
