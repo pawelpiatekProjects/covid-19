@@ -6,6 +6,7 @@ import * as variables from '../../assets/styles/variables';
 import DailyConfirmed from '../charts/dailyConfirmed';
 import Hero from '../../assets/reusable/components/hero';
 import Info from './Info/Info';
+import AllConfirmed from "../charts/allConfirmed";
 // import AllConfirmed from "../charts/allConfirmed";
 
 
@@ -75,7 +76,7 @@ const MainCountry = ({data}) => {
                                 }
             });
             setAllConfirmedChart(allConfirmedChart);
-            console.log(allConfirmedChart);
+            // console.log(allConfirmedChart);
             const lastDay = mainCountry[mainCountry.length-1];
             const previousDay = mainCountry[mainCountry.length-2];
             const rate = (lastDay.deaths/lastDay.confirmed).toFixed(3);
@@ -114,6 +115,7 @@ const MainCountry = ({data}) => {
 
                 <MainCountryHeader>Statystyki z dnia: {date}</MainCountryHeader>
                 <Info data={introData}/>
+                <AllConfirmed data={allConfirmedChart}/>
                 {/*<DailyConfirmed/>*/}
                 {/*{console.log(allConfirmedChart)}*/}
 
