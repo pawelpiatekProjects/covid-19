@@ -9,6 +9,8 @@ import {
     YAxis,
     ResponsiveContainer,
     Tooltip,
+    ComposedChart,
+    Bar,
     Cell
 } from 'recharts';
 
@@ -27,7 +29,8 @@ const AllConfirmed = ({data}) =>{
     data.map(el=>{
         confirmed.push({
             date: el.date,
-            potwierdzone: parseFloat(el.confirmed)
+            potwierdzone: parseFloat(el.confirmed),
+            śmiertelne: el.deaths
         })
     })
     return(
@@ -36,13 +39,14 @@ const AllConfirmed = ({data}) =>{
 
             <ChartHeader>Liczba zachorowań w Polsce w kolejnych dniach</ChartHeader>
                     <ResponsiveContainer width="100%" height={400}>
-                        <LineChart data={confirmed} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
+                        <ComposedChart data={confirmed} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
                             <Line type="monotone" dataKey="potwierdzone" stroke="#8884d8"/>
+                            <Bar dataKey="śmiertelne" barSize={20} fill="#413ea0" />
                             <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                             <XAxis dataKey="date"/>
                             <YAxis/>
                             <Tooltip/>
-                        </LineChart>
+                        </ComposedChart>
                     </ResponsiveContainer>
 
 
