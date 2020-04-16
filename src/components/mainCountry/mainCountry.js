@@ -2,17 +2,18 @@ import React, {useState, useEffect} from 'react';
 import {APIURL} from '../../assets/APIURL';
 import styled from 'styled-components';
 import axios from 'axios';
-import DailyConfirmed from '../charts/dailyConfirmed';
+import BarChartComponent from '../charts/BarChartComponent';
 import Hero from '../../assets/reusable/components/hero';
 import Info from './Info/Info';
 import AllConfirmed from "../charts/allConfirmed";
 import ActiveCases from '../charts/activeCases';
-
+import * as variables from '../../assets/styles/variables';
+import DeathsAndRecovered from '../charts/deathsAndRecovered';
 
 
 const MainCountryWrapper = styled.div`
-width: 80%;
-margin: 5rem auto;
+//width: 100%;
+//margin: 5rem auto;
 `;
 
 
@@ -30,6 +31,7 @@ const MainCountry = () => {
     const [introData, setIntroData] = useState({});
     const [dailyConfirmed, setDailyConfirmed] = useState([]);
     const [activeCases, setActiveCases] = useState([]);
+    const [dailyDeaths, setDailyDeaths] = useState([]);
 
 
     const calculateIncrease = (num1, num2, precision) =>{
@@ -50,14 +52,17 @@ const MainCountry = () => {
             });
             const dailyConfirmed = [];
             const currentCases = [];
+            const dailyDeaths = [];
 
             for(let i=0; i < allConfirmedChart.length ;i++){
                 let confirmed = 0;
+                let deaths = 0;
                 if(i>0){
                      confirmed = allConfirmedChart[i].confirmed - allConfirmedChart[i-1].confirmed;
-
+                     deaths = allConfirmedChart[i].deaths - allConfirmedChart[i-1].deaths;
                 }else{
                     confirmed = allConfirmedChart[i].confirmed;
+                    deaths = allConfirmedChart[i].deaths;
                 }
 
                 dailyConfirmed.push({
@@ -68,12 +73,17 @@ const MainCountry = () => {
                     date:allConfirmedChart[i].date,
                     Chorzy: allConfirmedChart[i].confirmed - allConfirmedChart[i].recovered - allConfirmedChart[i].deaths
                 })
+                dailyDeaths.push({
+                    date: allConfirmedChart[i].date,
+                    Zgony: deaths
+                })
 
             }
 
 
             setActiveCases(currentCases);
-            setDailyConfirmed(dailyConfirmed)
+            setDailyConfirmed(dailyConfirmed);
+            setDailyDeaths(dailyDeaths);
 
             setAllConfirmedChart(allConfirmedChart);
             // console.log(allConfirmedChart);
@@ -109,15 +119,24 @@ const MainCountry = () => {
 
     return (
         <>
-
-            <Hero text="Statystyki w Polsce"/>
             <MainCountryWrapper>
 
                 <MainCountryHeader>Statystyki z dnia: {date}</MainCountryHeader>
                 <Info data={introData}/>
                 <AllConfirmed data={allConfirmedChart}/>
-                <DailyConfirmed data={dailyConfirmed}/>
+                <BarChartComponent
+                    barColor={variables.yellow1}
+                    dataKey="Potwierdzone"
+                    data={dailyConfirmed}
+                    header="Dzienna liczba zachorowań w Polsce"/>
                 <ActiveCases data={activeCases}/>
+                <BarChartComponent
+                    barColor={variables.red1}
+                    dataKey="Zgony"
+                    data={dailyDeaths}
+                    header="Dzienna liczba zgonów"
+                    />
+                    <DeathsAndRecovered data={allConfirmedChart}/>
 
             </MainCountryWrapper>
         </>
