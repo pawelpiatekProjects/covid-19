@@ -9,6 +9,7 @@ import AllConfirmed from "../charts/allConfirmed";
 import ActiveCases from '../charts/activeCases';
 import * as variables from '../../assets/styles/variables';
 import DeathsAndRecovered from '../charts/deathsAndRecovered';
+import Loader from 'react-loader-spinner';
 
 
 const MainCountryWrapper = styled.div`
@@ -22,6 +23,12 @@ font-weight: 400;
 font-size: 2.5rem;
 `;
 
+const LoadingWrapper = styled.div`
+margin: 5rem auto;
+width: 100%;
+text-align: center;
+`;
+
 
 const MainCountry = () => {
 
@@ -32,6 +39,7 @@ const MainCountry = () => {
     const [dailyConfirmed, setDailyConfirmed] = useState([]);
     const [activeCases, setActiveCases] = useState([]);
     const [dailyDeaths, setDailyDeaths] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
 
     const calculateIncrease = (num1, num2, precision) =>{
@@ -40,6 +48,7 @@ const MainCountry = () => {
 
     useEffect(() => {
         const fetchData = async ()=>{
+            setIsLoading(true)
             const {data} = await axios.get(APIURL);
             const mainCountry = data['Poland'];
             setCases(mainCountry);
@@ -112,6 +121,7 @@ const MainCountry = () => {
                 rateIncrease: rateIncrease
             }
             setIntroData(introData);
+            setIsLoading(false);
         }
         fetchData();
     }, [])
@@ -120,23 +130,38 @@ const MainCountry = () => {
     return (
         <>
             <MainCountryWrapper>
+                <MainCountryHeader>Statystyki z Polski z dnia: {date}</MainCountryHeader>
+                {isLoading ? (
+                    <LoadingWrapper>
+                        <Loader
+                            type="ThreeDots"
+                            color={variables.secondaryBlue}
+                            height={100}
+                            width={100}
+                        />
+                    </LoadingWrapper>
+                ):(
+                    <>
 
-                <MainCountryHeader>Statystyki z dnia: {date}</MainCountryHeader>
-                <Info data={introData}/>
-                <AllConfirmed data={allConfirmedChart}/>
-                <BarChartComponent
-                    barColor={variables.yellow1}
-                    dataKey="Potwierdzone"
-                    data={dailyConfirmed}
-                    header="Dzienna liczba zachorowań w Polsce"/>
-                <ActiveCases data={activeCases}/>
-                <BarChartComponent
-                    barColor={variables.red1}
-                    dataKey="Zgony"
-                    data={dailyDeaths}
-                    header="Dzienna liczba zgonów"
-                    />
-                    <DeathsAndRecovered data={allConfirmedChart}/>
+                        <Info data={introData}/>
+                        <AllConfirmed data={allConfirmedChart}/>
+                        <BarChartComponent
+                            barColor={variables.yellow1}
+                            dataKey="Potwierdzone"
+                            data={dailyConfirmed}
+                            header="Dzienna liczba zachorowań w Polsce"/>
+                        <ActiveCases data={activeCases}/>
+                        <BarChartComponent
+                            barColor={variables.red1}
+                            dataKey="Zgony"
+                            data={dailyDeaths}
+                            header="Dzienna liczba zgonów"
+                        />
+                        <DeathsAndRecovered data={allConfirmedChart}/>
+                    </>
+                )}
+
+
 
             </MainCountryWrapper>
         </>

@@ -35,7 +35,7 @@ font-size: 1.4rem;
 `;
 
 const Details = styled.div`
-background: ${variables.primaryBlue};
+background: ${variables.secondaryBlue};
 width: 90%;
 margin: 0 auto;
 padding: 1rem;
