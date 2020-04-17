@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '../../assets/img/logo1.png';
+import logo from '../../assets/img/logo3.png';
 import * as variables from '../../assets/styles/variables';
 
 const TopBarWrapper = styled.div`

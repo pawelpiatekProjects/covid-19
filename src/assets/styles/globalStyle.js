@@ -10,6 +10,10 @@ const GlobalStyle = createGlobalStyle`
     @media(max-width: 700px){
     font-size: 56.25%;
     }
+    
+    @media(max-width: 500px){
+    font-size: 50%;
+    }
   }
 
   *,
@@ -25,13 +29,6 @@ const GlobalStyle = createGlobalStyle`
     
     background-color: ${variables.primaryGrey};
     
-    @media(max-width: 700px){
-    padding: 4rem 3rem;
-    }
-    
-    @media(max-width: 500px){
-    padding: 4rem .5rem;
-    }
   }
 
   button {

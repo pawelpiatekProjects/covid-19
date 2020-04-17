@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../assets/styles/variables';
 import {
-    LineChart,
     Line,
     CartesianGrid,
     XAxis,
@@ -11,13 +10,20 @@ import {
     Tooltip,
     ComposedChart,
     Bar,
-    Cell
 } from 'recharts';
 
 const AllConfirmedWrapper = styled.div`
-  background-color: ${variables.white};
+   background-color: ${variables.white};
   padding: 5rem;
   margin-top: 3rem;
+  
+  @media(max-width: 800px){
+  padding: 2rem;
+  }
+  
+  @media(max-width: 500px){
+  padding: 1rem;
+  }
 `;
 
 const ChartWrapper = styled.div`
@@ -45,17 +51,22 @@ height: 15rem;
 
 const ChartHeader = styled.h1`
 font-weight: 400;
+
+font-weight: 400;
+
+@media(max-width: 600px){
+font-size: 1.6rem;
 `;
 
 const AllConfirmed = ({data}) => {
     const confirmed = [];
-    data.map(el => {
+    data.map(el => (
         confirmed.push({
             date: el.date,
             potwierdzone: parseFloat(el.confirmed),
             śmiertelne: el.deaths
         })
-    })
+    ))
     return (
         <AllConfirmedWrapper>
 

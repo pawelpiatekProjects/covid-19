@@ -3,7 +3,6 @@ import {APIURL} from '../../assets/APIURL';
 import styled from 'styled-components';
 import axios from 'axios';
 import BarChartComponent from '../charts/BarChartComponent';
-import Hero from '../../assets/reusable/components/hero';
 import Info from './Info/Info';
 import AllConfirmed from "../charts/allConfirmed";
 import ActiveCases from '../charts/activeCases';
@@ -21,6 +20,10 @@ const MainCountryWrapper = styled.div`
 const MainCountryHeader = styled.h1`
 font-weight: 400;
 font-size: 2.5rem;
+
+@media(max-width: 1150px){
+font-size: 2rem;
+}
 `;
 
 const LoadingWrapper = styled.div`
@@ -32,7 +35,6 @@ text-align: center;
 
 const MainCountry = () => {
 
-    const [cases, setCases] = useState([]);
     const [allConfirmedChart, setAllConfirmedChart] = useState([]);
     const [date, setDate] = useState(null);
     const [introData, setIntroData] = useState({});
@@ -51,7 +53,7 @@ const MainCountry = () => {
             setIsLoading(true)
             const {data} = await axios.get(APIURL);
             const mainCountry = data['Poland'];
-            setCases(mainCountry);
+
 
             const allConfirmedChart = mainCountry.filter(el=>{
                 const date = parseInt(el.date.slice(5, 6))

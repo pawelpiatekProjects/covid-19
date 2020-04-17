@@ -7,6 +7,11 @@ const InfoWrapper = styled.div`
   grid-template-columns: repeat(12,1fr);
   grid-template-rows: repeat(2,max-content);
   grid-gap: 2.5rem;
+  
+  @media(max-width: 600px){
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  }
 
   
 `;
@@ -14,6 +19,10 @@ const InfoWrapper = styled.div`
 const Cell = styled.div`
   background: ${variables.white};
   grid-column: ${props => props.start}/${props => props.end};
+  
+  @media(max-width: 600px){
+  grid-column: 1/-1;
+  }
   padding: 2rem;
 `;
 

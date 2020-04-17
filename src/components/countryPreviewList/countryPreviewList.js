@@ -13,6 +13,10 @@ height: 80rem;
 const ListHeading = styled.h1`
 font-size: 2.5rem;
 font-weight: 400;
+
+@media(max-width: 1150px){
+font-size: 2rem;
+}
 `;
 
 const CountryList = styled.div`

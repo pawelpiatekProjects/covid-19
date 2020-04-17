@@ -2,39 +2,54 @@ import React from 'react';
 import styled from 'styled-components';
 import MainCountry from '../components/mainCountry/mainCountry';
 import CountryPreviewList from '../components/countryPreviewList/countryPreviewList';
-import Hero from '../assets/reusable/components/hero';
 
 const MainPageWrapper = styled.div`
+padding: 5rem;
+
+@media(max-width: 600px){
+padding: 3rem;
+}
+
+@media(max-width: 400px){
+padding: 1.5rem;
+}
 `;
 
-const HeroWrapper = styled.div`
-
-`;
 
 const ContentWrapper = styled.div`
-padding: 8rem;
-display: grid;
-grid-template-columns: 70% 30%;
-grid-gap: 5rem;
+
+display: flex;
 
 @media(max-width: 1000px){
-  grid-template-rows: repeat(2, max-content);
+flex-direction: column;
 }
 `;
 
 const MainCountryWrapper = styled.div`
-grid-column: 1/ span 1;
+margin-right: 5rem;
+width: 70%;
+
 @media(max-width: 1000px){
-grid-column: 1/-1;
-grid-row: 1/span 1;
+width: 90%;
+margin: 0 auto;
+}
+
+@media(max-width: 700px){
+width: 100%;
 }
 `;
 
 const CountryPreviewWrapper = styled.div`
-grid-column: 2/ -1;
+margin: 0 auto;
+width: 30%;
+
 @media(max-width: 1000px){
-grid-column: 1/-1;
-grid-row: 2/span 1;
+width: 90%;
+margin: 10rem auto;
+}
+
+@media(max-width: 700px){
+width: 100%;
 }
 
 `;
