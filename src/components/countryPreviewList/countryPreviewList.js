@@ -1,40 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
-import CountryPreview from '../countryPreview/contryPreviev';
-import * as variables from '../../assets/styles/variables';
-import Loader from 'react-loader-spinner';
+import Loader from '../../assets/reusable/components/loader';
+import CountryPreviewListWrapper from './countryPreviewListWrapper/countryPreviewListWrapper';
 
-const CountryPreviewListWrapper = styled.div`
-height: 80rem;
-`;
-
-
-const ListHeading = styled.h1`
-font-size: 2.5rem;
-font-weight: 400;
-
-@media(max-width: 1150px){
-font-size: 2rem;
-}
-`;
-
-const CountryList = styled.div`
-height: 100%;
-overflow-y: scroll;
-`;
-
-const FilterInput = styled.input`
-width: 100%;
-margin-bottom: 1rem;
-padding: .75rem;
-`;
-
-const LoadingWrapper = styled.div`
-margin: 5rem auto;
-width: 100%;
-text-align: center;
-`;
 
 //todo: add sorting by country name
 const CountryPreviewList = () => {
@@ -60,34 +28,17 @@ const CountryPreviewList = () => {
     }
 //todo: change loader
     return (
-
-        <CountryPreviewListWrapper>
-            <CountryList>
-                <ListHeading>Przypadki na świecie</ListHeading>
-                <FilterInput placeholder="Search" onChange={getInputValue}/>
-                {isLoading ? (
-                    <LoadingWrapper>
-                        <Loader
-                            type="ThreeDots"
-                            color={variables.secondaryBlue}
-                            height={100}
-                            width={100}
-                        />
-                    </LoadingWrapper>
-                ) : (
-                    countryList
-                        .filter(country => (
-                            country.toLowerCase().includes(inputValue.toLowerCase())
-                        ))
-                        .map(country => (
-                            <CountryPreview name={country} key={country}/>
-                        ))
-                )
-                }
-
-
-            </CountryList>
-        </CountryPreviewListWrapper>
+        <>
+            {isLoading ? (
+                <Loader/>
+            ) : (
+                <CountryPreviewListWrapper
+                    countryList={countryList}
+                    inputValue={inputValue}
+                    getInputValue={getInputValue}
+                />
+            )}
+        </>
     );
 };
 

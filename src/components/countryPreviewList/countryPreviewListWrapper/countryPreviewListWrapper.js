@@ -1,0 +1,48 @@
+import React from 'react';
+import styled from 'styled-components';
+import CountryPreview from '../../countryPreview/contryPreviev';
+
+const Wrapper = styled.div`
+height: 80rem;
+`;
+
+const CountryList = styled.div`
+height: 100%;
+overflow-y: scroll;
+`;
+
+const ListHeading = styled.h1`
+font-size: 2.5rem;
+font-weight: 400;
+
+@media(max-width: 1150px){
+font-size: 2rem;
+}
+`;
+
+const FilterInput = styled.input`
+width: 100%;
+margin-bottom: 1rem;
+padding: .75rem;
+`;
+
+const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue}) => {
+    return (
+        <Wrapper>
+            <CountryList>
+                <ListHeading>Przypadki na świecie</ListHeading>
+                <FilterInput placeholder="Search" onChange={getInputValue}/>
+                {countryList
+                    .filter(country => (
+                        country.toLowerCase().includes(inputValue.toLowerCase())
+                    ))
+                    .map(country => (
+                        <CountryPreview name={country} key={country}/>
+                    ))
+                }
+            </CountryList>
+        </Wrapper>
+    )
+};
+
+export default CountryPreviewListWrapper;
