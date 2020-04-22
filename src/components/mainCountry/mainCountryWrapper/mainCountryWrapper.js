@@ -21,29 +21,14 @@ font-size: 2rem;
 `;
 
 
-
-const MainCountryWrapper = ({date,  introData, allConfirmedChart, activeCases, dailyConfirmed, dailyDeaths}) =>{
-    return(
+const MainCountryWrapper = ({date, children}) => {
+    return (
         <Wrapper>
             <MainCountryHeader>Statystyki z Polski z dnia: {date}</MainCountryHeader>
 
-
-                    <Info data={introData}/>
-                    <AllConfirmed data={allConfirmedChart}/>
-                    <BarChartComponent
-                        barColor={variables.yellow1}
-                        dataKey="Potwierdzone"
-                        data={dailyConfirmed}
-                        header="Dzienna liczba zachorowań w Polsce"/>
-                    <ActiveCases data={activeCases}/>
-                    <BarChartComponent
-                        barColor={variables.red1}
-                        dataKey="Zgony"
-                        data={dailyDeaths}
-                        header="Dzienna liczba zgonów"
-                    />
-                    <DeathsAndRecovered data={allConfirmedChart}/>
-
+            <>
+                {children}
+            </>
         </Wrapper>
     )
 };

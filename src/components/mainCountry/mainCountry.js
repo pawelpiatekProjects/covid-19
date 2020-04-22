@@ -3,7 +3,12 @@ import {APIURL} from '../../assets/APIURL';
 import axios from 'axios';
 import MainCountryWrapper from './mainCountryWrapper/mainCountryWrapper';
 import LoaderComponent from '../../assets/reusable/components/loader';
-
+import * as variables from "../../assets/styles/variables";
+import Info from './Info/Info';
+import AllConfirmed from '../charts/allConfirmed';
+import BarChartComponent from '../charts/BarChartComponent';
+import ActiveCases from '../charts/activeCases';
+import DeathsAndRecovered from '../charts/deathsAndRecovered';
 
 
 
@@ -108,14 +113,23 @@ const MainCountry = () => {
             {isLoading ? (
                 <LoaderComponent/>
             ): (
-                <MainCountryWrapper
-                    date={date}
-                    introData={introData}
-                    allConfirmedChart={allConfirmedChart}
-                    activeCases={activeCases}
-                    dailyConfirmed={dailyConfirmed}
-                    dailyDeaths={dailyDeaths}
-                />
+                <MainCountryWrapper date={date}>
+                    <Info data={introData}/>
+                    <AllConfirmed data={allConfirmedChart}/>
+                    <BarChartComponent
+                        barColor={variables.yellow1}
+                        dataKey="Potwierdzone"
+                        data={dailyConfirmed}
+                        header="Dzienna liczba zachorowań w Polsce"/>
+                    <ActiveCases data={activeCases}/>
+                    <BarChartComponent
+                        barColor={variables.red1}
+                        dataKey="Zgony"
+                        data={dailyDeaths}
+                        header="Dzienna liczba zgonów"
+                    />
+                    <DeathsAndRecovered data={allConfirmedChart}/>
+                </MainCountryWrapper>
             )}
 
 
