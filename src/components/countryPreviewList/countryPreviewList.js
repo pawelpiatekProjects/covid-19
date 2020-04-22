@@ -36,6 +36,7 @@ width: 100%;
 text-align: center;
 `;
 
+//todo: add sorting by country name
 const CountryPreviewList = () => {
 
     const [countryList, setCountryList] = useState([]);
@@ -57,7 +58,7 @@ const CountryPreviewList = () => {
     const getInputValue = e => {
         setInputValue(e.target.value);
     }
-
+//todo: change loader
     return (
 
         <CountryPreviewListWrapper>

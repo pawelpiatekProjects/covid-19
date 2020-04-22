@@ -1,36 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import {APIURL} from '../../assets/APIURL';
-import styled from 'styled-components';
 import axios from 'axios';
-import BarChartComponent from '../charts/BarChartComponent';
-import Info from './Info/Info';
-import AllConfirmed from "../charts/allConfirmed";
-import ActiveCases from '../charts/activeCases';
-import * as variables from '../../assets/styles/variables';
-import DeathsAndRecovered from '../charts/deathsAndRecovered';
-import Loader from 'react-loader-spinner';
+import MainCountryWrapper from './mainCountryWrapper/mainCountryWrapper';
+import LoaderComponent from '../../assets/reusable/components/loader';
 
 
-const MainCountryWrapper = styled.div`
-//width: 100%;
-//margin: 5rem auto;
-`;
-
-
-const MainCountryHeader = styled.h1`
-font-weight: 400;
-font-size: 2.5rem;
-
-@media(max-width: 1150px){
-font-size: 2rem;
-}
-`;
-
-const LoadingWrapper = styled.div`
-margin: 5rem auto;
-width: 100%;
-text-align: center;
-`;
 
 
 const MainCountry = () => {
@@ -131,41 +105,20 @@ const MainCountry = () => {
 
     return (
         <>
-            <MainCountryWrapper>
-                <MainCountryHeader>Statystyki z Polski z dnia: {date}</MainCountryHeader>
-                {isLoading ? (
-                    <LoadingWrapper>
-                        <Loader
-                            type="ThreeDots"
-                            color={variables.secondaryBlue}
-                            height={100}
-                            width={100}
-                        />
-                    </LoadingWrapper>
-                ):(
-                    <>
-
-                        <Info data={introData}/>
-                        <AllConfirmed data={allConfirmedChart}/>
-                        <BarChartComponent
-                            barColor={variables.yellow1}
-                            dataKey="Potwierdzone"
-                            data={dailyConfirmed}
-                            header="Dzienna liczba zachorowań w Polsce"/>
-                        <ActiveCases data={activeCases}/>
-                        <BarChartComponent
-                            barColor={variables.red1}
-                            dataKey="Zgony"
-                            data={dailyDeaths}
-                            header="Dzienna liczba zgonów"
-                        />
-                        <DeathsAndRecovered data={allConfirmedChart}/>
-                    </>
-                )}
+            {isLoading ? (
+                <LoaderComponent/>
+            ): (
+                <MainCountryWrapper
+                    date={date}
+                    introData={introData}
+                    allConfirmedChart={allConfirmedChart}
+                    activeCases={activeCases}
+                    dailyConfirmed={dailyConfirmed}
+                    dailyDeaths={dailyDeaths}
+                />
+            )}
 
 
-
-            </MainCountryWrapper>
         </>
     );
 
