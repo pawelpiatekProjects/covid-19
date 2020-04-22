@@ -16,8 +16,18 @@ const CountryPreviewList = () => {
         setIsLoading(true);
         const fetch = async () => {
             const {data} = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
-            const keys = Object.keys(data)
-            setCountryList(keys);
+            const keys = Object.keys(data);
+            const values = Object.values(data);
+            const newArr = [];
+
+            for(let i=0; i<keys.length;i++){
+                newArr.push({
+                    name: keys[i],
+                    cases: values[i]
+                })
+            }
+
+            setCountryList(newArr);
             setIsLoading(false);
         }
         fetch();

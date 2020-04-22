@@ -26,7 +26,7 @@ margin-bottom: 1rem;
 padding: .75rem;
 `;
 
-const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue}) => {
+const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue }) => {
     return (
         <Wrapper>
             <CountryList>
@@ -34,10 +34,10 @@ const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue}) => 
                 <FilterInput placeholder="Search" onChange={getInputValue}/>
                 {countryList
                     .filter(country => (
-                        country.toLowerCase().includes(inputValue.toLowerCase())
+                        country.name.toLowerCase().includes(inputValue.toLowerCase())
                     ))
                     .map(country => (
-                        <CountryPreview name={country} key={country}/>
+                        <CountryPreview name={country.name} key={country.name} cases={country.cases}/>
                     ))
                 }
             </CountryList>

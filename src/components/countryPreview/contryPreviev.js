@@ -1,11 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import * as variables from '../../assets/styles/variables';
-import axios from 'axios';
 import CountryDetails from './countryDetails/countryDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
-import Loader from 'react-loader-spinner';
 
 const CountryPreviewWrapper = styled.div`
 
@@ -41,46 +39,12 @@ margin: 0 auto;
 padding: 1rem;
 `;
 
-const LoadingWrapper = styled.div`
-margin: 5rem auto;
-width: 100%;
-text-align: center;
-`;
-
-const CountryPreview = ({name}) => {
-
-    const [all, setAll] = useState(null);
-    const [deaths, setDeaths] = useState(null);
-    const [recovered, setRecovered] = useState(null);
+const CountryPreview = ({name, cases}) => {
     const[isDetails, setIsDetails] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
-    useEffect(()=>{
-        const fetch = async()=>{
-            setIsLoading(true);
-            const {data} = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
-            const country = data[name];
-            setAll(country[country.length-1].confirmed);
-            setDeaths(country[country.length-1].deaths)
-            setRecovered(country[country.length-1].recovered);
-            setIsLoading(false);
-        }
-
-        fetch()
-    },[]);
-
     let activeCaret = isDetails ? faCaretDown : faCaretRight;
+    const lastDay = cases[cases.length-1];
     return(
             <CountryPreviewWrapper onClick={()=>setIsDetails(!isDetails)}>
-                {isLoading ? (
-                    <LoadingWrapper>
-                        <Loader
-                            type="ThreeDots"
-                            color={variables.secondaryBlue}
-                            height={100}
-                            width={100}
-                        />
-                    </LoadingWrapper>
-                ) : (
                     <>
                         <Intro>
                             <CountryName>{name}</CountryName>
@@ -90,14 +54,11 @@ const CountryPreview = ({name}) => {
                         {
                             isDetails ? (
                                 <Details>
-                                    <CountryDetails confirmed={all} deaths={deaths} recovered={recovered}/>
+                                    <CountryDetails confirmed={lastDay.confirmed} deaths={lastDay.deaths} recovered={lastDay.recovered}/>
                                 </Details>
                             ) : null
                         }
                     </>
-                )}
-
-
             </CountryPreviewWrapper>
         );
 };
