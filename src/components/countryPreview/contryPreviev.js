@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import * as variables from '../../assets/styles/variables';
+import CountryPreviewWrapper from './countryPreviewWrapper/countryPreviewWrapper';
 import CountryDetails from './countryDetails/countryDetails';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
-const CountryPreviewWrapper = styled.div`
 
-`;
 
 const Intro = styled.div`
 background: ${variables.white};
@@ -38,27 +37,31 @@ width: 90%;
 margin: 0 auto;
 padding: 1rem;
 `;
-
+//todo: fix
 const CountryPreview = ({name, cases}) => {
     const[isDetails, setIsDetails] = useState(false);
-    let activeCaret = isDetails ? faCaretDown : faCaretRight;
     const lastDay = cases[cases.length-1];
     return(
             <CountryPreviewWrapper onClick={()=>setIsDetails(!isDetails)}>
-                    <>
-                        <Intro>
-                            <CountryName>{name}</CountryName>
+                <CountryPreviewWrapper
+                    isDetails={isDetails}
+                    lastDay={lastDay}
+                    countryName={name}
+                />
+                    {/*<>*/}
+                        {/*<Intro>*/}
+                            {/*<CountryName>{name}</CountryName>*/}
 
-                            <Caret icon={activeCaret}/>
-                        </Intro>
-                        {
-                            isDetails ? (
-                                <Details>
-                                    <CountryDetails confirmed={lastDay.confirmed} deaths={lastDay.deaths} recovered={lastDay.recovered}/>
-                                </Details>
-                            ) : null
-                        }
-                    </>
+                            {/*<Caret icon={activeCaret}/>*/}
+                        {/*</Intro>*/}
+                        {/*{*/}
+                            {/*isDetails ? (*/}
+                                {/*<Details>*/}
+                                    {/*<CountryDetails confirmed={lastDay.confirmed} deaths={lastDay.deaths} recovered={lastDay.recovered}/>*/}
+                                {/*</Details>*/}
+                            {/*) : null*/}
+                        {/*}*/}
+                    {/*</>*/}
             </CountryPreviewWrapper>
         );
 };
