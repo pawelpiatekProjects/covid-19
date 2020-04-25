@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import CountryPreview from '../../countryPreview/contryPreviev';
+import CountryPreview from '../countryPreview/countryPreview';
 
 const Wrapper = styled.div`
 height: 80rem;
@@ -37,8 +37,9 @@ const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue }) =>
                         country.name.toLowerCase().includes(inputValue.toLowerCase())
                     ))
                     .map(country => (
-                        <CountryPreview name={country.name} key={country.name} cases={country.cases}/>
-                    ))
+                       <CountryPreview name={country.name}/>
+                        )
+                    )
                 }
             </CountryList>
         </Wrapper>
