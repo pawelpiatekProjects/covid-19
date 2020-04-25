@@ -1,6 +1,8 @@
 import React from 'react';
 import GlobalStyle from './assets/styles/globalStyle';
-import MainPage from './pages/main';
+import MainCountryPage from './pages/mainCountryPage';
+import IntroPage from './pages/introPage';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader';
 import TopBar from './components/topBar/topBar';
 
@@ -19,7 +21,12 @@ function App() {
             />
             <GlobalStyle/>
             <TopBar/>
-            <MainPage/>
+            <Switch>
+                <Route path="/mainCountry" exact component={MainCountryPage}/>
+                <Route path="/" exact component={IntroPage}/>
+            </Switch>
+
+
         </div>
     );
 }

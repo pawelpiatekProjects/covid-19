@@ -54,7 +54,7 @@ width: 100%;
 
 `;
 
-const Main = () => {
+const MainCountryPage = () => {
     return (
         <MainPageWrapper>
             <ContentWrapper>
@@ -69,4 +69,4 @@ const Main = () => {
     )
 };
 
-export default Main;
+export default MainCountryPage;
