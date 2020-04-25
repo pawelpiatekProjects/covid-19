@@ -57,6 +57,7 @@ const World = () => {
                     lastDayConfirmed={lastDayConfirmed}
                     lastDayDeaths={lastDayDeaths}
                     lastDatRecovered={lastDayRecovered}
+                    data={globalCases}
                 />
                 <GlobalCases data={globalCases}/>
             </WorldWrapper>

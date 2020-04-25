@@ -39,7 +39,7 @@ const GlobalCases = ({data}) =>{
                     <LineChart data={data} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
                         <Line type="monotone" dataKey="confirmed" stroke={variables.lineChart2}/>
                         <Line type="monotone" dataKey="deaths" stroke={variables.red1}/>
-                        <Line type="monotone" dataKey="recovered" stroke={variables.lineChart1}/>
+                        <Line type="monotone" dataKey="recovered" stroke={variables.green1}/>
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                         <XAxis dataKey="date"/>
                         <YAxis/>

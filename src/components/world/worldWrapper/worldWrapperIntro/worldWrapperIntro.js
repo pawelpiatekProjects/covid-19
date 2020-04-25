@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../../../assets/styles/variables';
+import SmallChart from '../../../charts/smallChart';
+import ActiveCases from '../../../charts/activeCases';
 
 const Wrapper = styled.div`
 display: grid;
     grid-template-columns: repeat(3,1fr);
+    grid-template-rows: max-content;
     grid-gap: 5rem;
     margin: 5rem auto;
    
@@ -26,11 +29,15 @@ font-weight: 500;
 
 `;
 
-const WorldWrapperIntro = ({lastDayConfirmed, lastDayDeaths, lastDatRecovered}) =>{
+const WorldWrapperIntro = ({lastDayConfirmed, lastDayDeaths, lastDatRecovered, data}) =>{
+    console.log(data)
     return(
         <Wrapper>
             <Cell start={1} >
                 <CellHeader>Potwierdzone przypadki: <span>{lastDayConfirmed}</span></CellHeader>
+                <ActiveCases data={data}/>
+                //todo: fix
+
             </Cell>
             <Cell start={2} >
                 <CellHeader>Zgony: <span>{lastDayDeaths}</span></CellHeader>
