@@ -26,18 +26,21 @@ margin-bottom: 1rem;
 padding: .75rem;
 `;
 
+//todo: add responisve layout - smaller text
+
 const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue }) => {
     return (
         <Wrapper>
+            <ListHeading>Przypadki na świecie</ListHeading>
+            <FilterInput placeholder="Search" onChange={getInputValue}/>
             <CountryList>
-                <ListHeading>Przypadki na świecie</ListHeading>
-                <FilterInput placeholder="Search" onChange={getInputValue}/>
+
                 {countryList
                     .filter(country => (
                         country.name.toLowerCase().includes(inputValue.toLowerCase())
                     ))
                     .map(country => (
-                       <CountryPreview name={country.name}/>
+                       <CountryPreview name={country.name} />
                         )
                     )
                 }

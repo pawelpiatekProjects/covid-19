@@ -12,7 +12,7 @@ import DeathsAndRecovered from '../charts/deathsAndRecovered';
 
 
 
-const MainCountry = () => {
+const MainCountry = ({country}) => {
 
     const [allConfirmedChart, setAllConfirmedChart] = useState([]);
     const [date, setDate] = useState(null);
@@ -31,7 +31,7 @@ const MainCountry = () => {
         const fetchData = async ()=>{
             setIsLoading(true)
             const {data} = await axios.get(APIURL);
-            const mainCountry = data['Poland'];
+            const mainCountry = data[country];
 
 
             const allConfirmedChart = mainCountry.filter(el=>{
@@ -115,7 +115,14 @@ const MainCountry = () => {
             ): (
                 <MainCountryWrapper date={date}>
                     <Info data={introData}/>
-                    <AllConfirmed data={allConfirmedChart}/>
+                    <AllConfirmed
+                        color2={variables.lineChart1}
+                        color1={variables.red1}
+                        dataKey1="confirmed"
+                        dataKey2="deaths"
+                        countryName="Poland"
+                        data={allConfirmedChart}
+                    />
                     <BarChartComponent
                         barColor={variables.yellow1}
                         dataKey="Potwierdzone"

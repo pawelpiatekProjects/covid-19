@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 const MainCountryHeader = styled.h1`
 font-weight: 400;
 font-size: 2.5rem;
+text-align: center;
 
 @media(max-width: 1150px){
 font-size: 2rem;

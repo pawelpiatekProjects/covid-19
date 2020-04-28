@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Loader from '../../assets/reusable/components/loader';
 import CountryPreviewListWrapper from './countryPreviewListWrapper/countryPreviewListWrapper';
+import {Link} from 'react-router-dom';
 
 
 //todo: add sorting by country name
@@ -36,6 +37,9 @@ const CountryPreviewList = () => {
     const getInputValue = e => {
         setInputValue(e.target.value);
     }
+    const onCountyClick = (id) =>{
+
+    }
 //todo: change loader
     return (
         <>
@@ -43,6 +47,7 @@ const CountryPreviewList = () => {
                 <Loader/>
             ) : (
                 <CountryPreviewListWrapper
+
                     countryList={countryList}
                     inputValue={inputValue}
                     getInputValue={getInputValue}

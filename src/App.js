@@ -5,6 +5,7 @@ import IntroPage from './pages/introPage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import GoogleFontLoader from 'react-google-font-loader';
 import TopBar from './components/topBar/topBar';
+import CountryInfo from './components/countryInfo/countryInfo';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
             <TopBar/>
             <Switch>
                 <Route path="/mainCountry" exact component={MainCountryPage}/>
+                <Route path="/country" exact component={CountryInfo}/>
                 <Route path="/" exact component={IntroPage}/>
             </Switch>
 

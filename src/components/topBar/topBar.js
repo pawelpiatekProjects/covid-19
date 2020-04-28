@@ -8,6 +8,7 @@ const TopBarWrapper = styled.div`
 padding: 2rem;
 width: 100%;
 background: ${variables.white};
+margin-bottom: 5rem;
 `;
 
 const Logo = styled.img`
@@ -23,12 +24,11 @@ const Navigation = styled.ul`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const NavigationItem = styled.li`
-  &:nth-child(2){
-    margin-left: 5rem;
-  }
+ 
   a{
   font-size: 2rem;
     text-decoration: none;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import MainCountry from '../components/mainCountry/mainCountry';
 import CountryPreviewList from '../components/countryPreviewList/countryPreviewList';
@@ -55,14 +55,18 @@ width: 100%;
 `;
 
 const MainCountryPage = () => {
+
+
+
+
     return (
         <MainPageWrapper>
             <ContentWrapper>
                 <MainCountryWrapper>
-                    <MainCountry/>
+                    <MainCountry country='Poland'/>
                 </MainCountryWrapper>
                 <CountryPreviewWrapper>
-                    <CountryPreviewList/>
+                    <CountryPreviewList />
                 </CountryPreviewWrapper>
             </ContentWrapper>
         </MainPageWrapper>

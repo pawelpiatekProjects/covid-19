@@ -58,25 +58,25 @@ font-weight: 400;
 font-size: 1.6rem;
 `;
 
-const AllConfirmed = ({data}) => {
-    const confirmed = [];
-    data.map(el => (
-        confirmed.push({
-            date: el.date,
-            potwierdzone: parseFloat(el.confirmed),
-            śmiertelne: el.deaths
-        })
-    ))
+const AllConfirmed = ({data, countryName, dataKey1, dataKey2, color1, color2}) => {
+    // const confirmed = [];
+    // data.map(el => (
+    //     confirmed.push({
+    //         date: el.date,
+    //         potwierdzone: parseFloat(el.confirmed),
+    //         śmiertelne: el.deaths
+    //     })
+    // ))
     return (
         <AllConfirmedWrapper>
 
 
-            <ChartHeader>Liczba zachorowań w Polsce w kolejnych dniach</ChartHeader>
+            <ChartHeader>Confirmed cases in {countryName} </ChartHeader>
             <ChartWrapper>
                 <ResponsiveContainer>
-                    <ComposedChart data={confirmed} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
-                        <Line type="monotone" dataKey="potwierdzone" stroke={variables.lineChart1}/>
-                        <Bar dataKey="śmiertelne" barSize={20} fill={variables.red1}/>
+                    <ComposedChart data={data} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
+                        <Line type="monotone" dataKey={dataKey1} stroke={color2}/>
+                        <Bar dataKey={dataKey2} barSize={20} fill={color1}/>
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                         <XAxis dataKey="date"/>
                         <YAxis/>
