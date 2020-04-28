@@ -38,10 +38,9 @@ font-size: 1.4rem;
 const CountryPreview = ({name}) =>{
     return(
         <CountryPreviewWrapper>
-            <CountryPreviewWrapperHeader><Link to={{
-                pathname: '/country',
-                state: name
-            }}>{name}</Link></CountryPreviewWrapperHeader>
+            <CountryPreviewWrapperHeader>
+                {name}
+                </CountryPreviewWrapperHeader>
         </CountryPreviewWrapper>
     )
 };

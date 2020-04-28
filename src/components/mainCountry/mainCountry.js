@@ -61,7 +61,7 @@ const MainCountry = ({country}) => {
                 })
                 currentCases.push({
                     date:allConfirmedChart[i].date,
-                    Chorzy: allConfirmedChart[i].confirmed - allConfirmedChart[i].recovered - allConfirmedChart[i].deaths
+                    current: allConfirmedChart[i].confirmed - allConfirmedChart[i].recovered - allConfirmedChart[i].deaths
                 })
                 dailyDeaths.push({
                     date: allConfirmedChart[i].date,
@@ -128,7 +128,10 @@ const MainCountry = ({country}) => {
                         dataKey="Potwierdzone"
                         data={dailyConfirmed}
                         header="Dzienna liczba zachorowań w Polsce"/>
-                    <ActiveCases data={activeCases}/>
+                    <ActiveCases
+                        data={activeCases}
+                        dataKey="current"
+                        color={variables.primaryBlue}/>
                     <BarChartComponent
                         barColor={variables.red1}
                         dataKey="Zgony"
