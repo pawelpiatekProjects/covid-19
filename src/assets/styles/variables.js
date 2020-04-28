@@ -9,3 +9,4 @@ export const green1 = "#598c14";
 export const yellow1 = "#ffc719"
 export const lineChart1 = "#f47721";
 export const lineChart2 = "#0091cd";
+export const textColor = "#000000";

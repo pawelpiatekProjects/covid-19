@@ -14,14 +14,51 @@ const Logo = styled.img`
   height: 8rem;
 `;
 
+const Nav = styled.nav`
+
+`;
+
+const Navigation = styled.ul`
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const NavigationItem = styled.li`
+  &:nth-child(2){
+    margin-left: 5rem;
+  }
+  a{
+  font-size: 2rem;
+    text-decoration: none;
+    color: ${variables.textColor};
+    transition: all .2s;
+    
+    &:hover{
+      color: ${variables.primaryBlue};
+    }
+  }
+`;
+
 const TopBar = () => {
     return (
 
-            <TopBarWrapper>
-                <Link to="/">
-                    <Logo src={logo}/>
-                </Link>
-            </TopBarWrapper>
+        <TopBarWrapper>
+            <Nav>
+                <Navigation>
+                    <NavigationItem>
+                        <Link to="/">
+                            <Logo src={logo}/>
+                        </Link>
+                    </NavigationItem>
+                    <NavigationItem>
+                        <Link to="/mainCountry">Countries </Link>
+                    </NavigationItem>
+                </Navigation>
+            </Nav>
+
+        </TopBarWrapper>
 
     )
 };
