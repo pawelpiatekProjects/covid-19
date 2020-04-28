@@ -21,6 +21,7 @@ const MainCountry = () => {
     const [activeCases, setActiveCases] = useState([]);
     const [dailyDeaths, setDailyDeaths] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [country, setCountry] = useState('Poland');
 
 
 
@@ -60,7 +61,7 @@ const MainCountry = () => {
 
                 dailyConfirmed.push({
                     date: allConfirmedChart[i].date,
-                    Potwierdzone: confirmed
+                    confirmed: confirmed
                 })
                 currentCases.push({
                     date:allConfirmedChart[i].date,
@@ -68,7 +69,7 @@ const MainCountry = () => {
                 })
                 dailyDeaths.push({
                     date: allConfirmedChart[i].date,
-                    Zgony: deaths
+                    deaths: deaths
                 })
 
             }
@@ -79,7 +80,7 @@ const MainCountry = () => {
             setDailyDeaths(dailyDeaths);
 
             setAllConfirmedChart(allConfirmedChart);
-            // console.log(allConfirmedChart);
+
             const lastDay = mainCountry[mainCountry.length-1];
             const previousDay = mainCountry[mainCountry.length-2];
             const rate = (lastDay.deaths/lastDay.confirmed).toFixed(3);
@@ -110,7 +111,8 @@ const MainCountry = () => {
         fetchData();
     }, [])
 
-
+    const dailyConfirmedString = `Daily confirmed in ${country}`;
+    const dailyDeathsString = `Daily deaths in ${country}`;
 
     return (
         <>
@@ -129,18 +131,18 @@ const MainCountry = () => {
                     />
                     <BarChartComponent
                         barColor={variables.yellow1}
-                        dataKey="Potwierdzone"
+                        dataKey="confirmed"
                         data={dailyConfirmed}
-                        header="Dzienna liczba zachorowań w Polsce"/>
+                        header={dailyConfirmedString}/>
                     <ActiveCases
                         data={activeCases}
                         dataKey="current"
                         color={variables.primaryBlue}/>
                     <BarChartComponent
                         barColor={variables.red1}
-                        dataKey="Zgony"
+                        dataKey="deaths"
                         data={dailyDeaths}
-                        header="Dzienna liczba zgonów"
+                        header={dailyDeathsString}
                     />
                     <DeathsAndRecovered data={allConfirmedChart}/>
                 </MainCountryWrapper>

@@ -11,10 +11,9 @@ const WorldWrapperHeader = styled.h1`
 `;
 
 const WorldWrapper = ({date, children}) =>{
-    console.log(date)
     return(
         <Wrapper>
-            <WorldWrapperHeader>Statystyki z dnia: {date}</WorldWrapperHeader>
+            <WorldWrapperHeader>Last update: {date}</WorldWrapperHeader>
             {children}
         </Wrapper>
     )

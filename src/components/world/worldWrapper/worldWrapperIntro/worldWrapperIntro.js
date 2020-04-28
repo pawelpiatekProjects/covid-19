@@ -51,7 +51,7 @@ const WorldWrapperIntro = ({lastDayConfirmed, lastDayDeaths, lastDatRecovered, d
     return (
         <Wrapper>
             <Cell start={1} end={2}>
-                <CellHeader>Potwierdzone przypadki: <span>{lastDayConfirmed}</span></CellHeader>
+                <CellHeader>Confirmed: <span>{lastDayConfirmed}</span></CellHeader>
                 <CellContent>
                     {data.length > 0 ? <SmallChart
                         height="10"
@@ -63,7 +63,7 @@ const WorldWrapperIntro = ({lastDayConfirmed, lastDayDeaths, lastDatRecovered, d
                 {/*fix charts to responsive*/}
             </Cell>
             <Cell start={2} end={3}>
-                <CellHeader>Zgony: <span>{lastDayDeaths}</span></CellHeader>
+                <CellHeader>Deaths: <span>{lastDayDeaths}</span></CellHeader>
                 <CellContent>
                     {data.length > 0 ? <SmallChart
                         height="10"
@@ -75,7 +75,7 @@ const WorldWrapperIntro = ({lastDayConfirmed, lastDayDeaths, lastDatRecovered, d
 
             </Cell>
             <Cell start={3} end={-1}>
-                <CellHeader>Wyleczoni: <span>{lastDatRecovered}</span></CellHeader>
+                <CellHeader>Recovered: <span>{lastDatRecovered}</span></CellHeader>
                 <CellContent>
                     {data.length > 0 ? <SmallChart
                         height="10"

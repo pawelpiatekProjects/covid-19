@@ -47,6 +47,13 @@ border-right: 2px solid ${variables.primaryBlue};
 
 const CountryPreviewContentItem = styled.p`
 
+@media(max-width: 600px){
+font-size: 1.6rem;
+}
+
+@media(max-width: 400px){
+font-size: 1.4rem;
+}
 
   span{
   color: ${props=>props.color};

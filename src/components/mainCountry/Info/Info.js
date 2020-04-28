@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import * as variables from '../../../assets/styles/variables';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCaretDown, faCaretUp} from "@fortawesome/free-solid-svg-icons";
 
 const InfoWrapper = styled.div`
   display: grid;
@@ -19,6 +21,10 @@ const InfoWrapper = styled.div`
 const Cell = styled.div`
   background: ${variables.white};
   grid-column: ${props => props.start}/${props => props.end};
+  
+  svg{
+  margin-right: 1rem;
+  }
   
   @media(max-width: 600px){
   grid-column: 1/-1;
@@ -56,38 +62,44 @@ const Info = ({data}) => {
         <>
             <InfoWrapper>
                 <Cell start={1} end={7}>
-                    <CellHeader>Liczba zakażonych w Polsce:</CellHeader>
+                    <CellHeader>Confirmed cases:</CellHeader>
                     <Case>{data.confirmed}</Case>
                     <Percent color={data.confirmedIncrease < 0 ? variables.red1 : variables.green1}>
-                        {data.confirmedIncrease < 0 ? '-' : ''}{data.confirmedIncrease}%
+                        {data.confirmedIncrease < 0 ? <FontAwesomeIcon icon={faCaretDown}/> : <FontAwesomeIcon icon={faCaretUp}/>}
+                        {data.confirmedIncrease}%
                     </Percent>
+
                 </Cell>
                 <Cell start={7} end={-1}>
-                    <CellHeader>Aktualnie chorujący:</CellHeader>
+                    <CellHeader>Currently infected:</CellHeader>
                     <Case>{data.activeCases}</Case>
                     <Percent color={data.activeCasesIncrease < 0 ? variables.red1 : variables.green1}>
-                        {data.activeCasesIncrease < 0 ? '-' : ''}{data.activeCasesIncrease}%
+                        {data.activeCasesIncrease < 0 ?<FontAwesomeIcon icon={faCaretDown}/> : <FontAwesomeIcon icon={faCaretUp}/>}
+                        {data.activeCasesIncrease}%
                     </Percent>
                 </Cell>
                 <Cell start={1} end={5}>
-                    <CellHeader>Wyleczeni:</CellHeader>
+                    <CellHeader>Recovered:</CellHeader>
                     <Case>{data.recovered}</Case>
                     <Percent color={data.recoveredIncrease < 0 ? variables.red1 : variables.green1}>
-                        {data.recoveredIncrease < 0 ? '-' : ''}{data.recoveredIncrease}%
+                        {data.recoveredIncrease < 0 ? <FontAwesomeIcon icon={faCaretDown}/> : <FontAwesomeIcon icon={faCaretUp}/>}
+                        {data.recoveredIncrease}%
                     </Percent>
                 </Cell>
                 <Cell start={5} end={9}>
-                    <CellHeader>Łączna liczba zbonów:</CellHeader>
+                    <CellHeader>Deaths:</CellHeader>
                     <Case>{data.deaths}</Case>
                     <Percent color={data.deathIncrease < 0 ? variables.red1 : variables.green1}>
-                        {data.deathIncrease < 0 ? '-' : ''}{data.deathIncrease}%
+                        {data.deathIncrease < 0 ? <FontAwesomeIcon icon={faCaretDown}/> : <FontAwesomeIcon icon={faCaretUp}/>}
+                        {data.deathIncrease}%
                     </Percent>
                 </Cell>
                 <Cell start={9} end={-1}>
-                    <CellHeader>Śmiertelność:</CellHeader>
+                    <CellHeader>Mortality rate:</CellHeader>
                     <Case>{data.rate}%</Case>
                     <Percent color={data.rateIncrease < 0 ? variables.red1 : variables.green1}>
-                        {data.rateIncrease < 0 ? '-' : ''}{data.rateIncrease}%
+                        {data.rateIncrease < 0 ? <FontAwesomeIcon icon={faCaretDown}/> : <FontAwesomeIcon icon={faCaretUp}/>}
+                        {data.rateIncrease}%
                     </Percent>
                 </Cell>
             </InfoWrapper>

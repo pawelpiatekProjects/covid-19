@@ -63,19 +63,18 @@ const DeathsAndRecovered = ({data}) => {
     data.map(el => (
         deathsAndRecoveredArr.push({
             date: el.date,
-            potwierdzone: parseFloat(el.confirmed),
-            zgony: el.deaths,
-            wyzdrowienia: el.recovered
+            deaths: el.deaths,
+            recovered: el.recovered
         })
     ))
     return (
         <Wrapper>
-            <ChartHeader>Stosunek zgonów do wyzdrowień</ChartHeader>
+            <ChartHeader>Deaths and recovered ratio</ChartHeader>
             <ChartWrapper>
                 <ResponsiveContainer >
                     <ComposedChart data={deathsAndRecoveredArr} margin={{top: 5, right: 20, bottom: 5, left: 0}}>
-                        <Line type="monotone" dataKey="zgony" stroke={variables.red1}/>
-                        <Line type="monotone" dataKey="wyzdrowienia" stroke={variables.green1}/>
+                        <Line type="monotone" dataKey="deaths" stroke={variables.red1}/>
+                        <Line type="monotone" dataKey="recovered" stroke={variables.green1}/>
                         <CartesianGrid stroke="#ccc" strokeDasharray="5 5"/>
                         <XAxis dataKey="date"/>
                         <YAxis/>

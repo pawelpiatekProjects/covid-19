@@ -31,7 +31,7 @@ padding: .75rem;
 const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue }) => {
     return (
         <Wrapper>
-            <ListHeading>Przypadki na świecie</ListHeading>
+            <ListHeading>Cases in the world</ListHeading>
             <FilterInput placeholder="Search" onChange={getInputValue}/>
             <CountryList>
 
