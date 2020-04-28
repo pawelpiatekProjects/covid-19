@@ -11,7 +11,7 @@ background: ${variables.white};
 margin-bottom: 5rem;
 
 @media(max-width: 500px){
-padding: .5rem;
+padding: 2rem .5rem;
 }
 `;
 
@@ -19,7 +19,12 @@ const Logo = styled.img`
   height: 8rem;
   
   @media(max-width: 500px){
-  height: 4rem;
+  height: 6rem;
+  }
+  
+  @media(max-width: 350px){
+  height: 5rem;
+  margin-top: 1rem;
   }
 `;
 
@@ -36,22 +41,18 @@ const Navigation = styled.ul`
 `;
 
 const Links = styled.div`
-
+    
 `;
 
 const NavigationItem = styled.li`
  display: inline-block;
- margin: 0 3rem;
+  margin: 0 2rem;
   a{
   font-size: 2rem;
     text-decoration: none;
     color: ${variables.textColor};
     transition: all .2s;
-    
-    @media(max-width: 500px){
-    font-size: 1.4rem;
-   
-    }
+
     
     &:hover{
       color: ${variables.primaryBlue};

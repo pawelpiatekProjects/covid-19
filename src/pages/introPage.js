@@ -15,9 +15,12 @@ padding: 1.5rem;
 }
 `;
 
+
+
 const IntroPage = ()=>{
     return(
         <IntroPageWrapper>
+
             <World/>
         </IntroPageWrapper>
     )
