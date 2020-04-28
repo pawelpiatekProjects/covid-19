@@ -4,6 +4,7 @@ import axios from 'axios';
 import WorldWrapper from './worldWrapper/worldWrapper';
 import GlobalCases from '../charts/globalCases';
 import WorldWrapperIntro from './worldWrapper/worldWrapperIntro/worldWrapperIntro';
+import SmallChart from "../charts/smallChart";
 
 const World = () => {
 
