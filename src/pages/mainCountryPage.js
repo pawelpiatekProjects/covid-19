@@ -57,13 +57,11 @@ width: 100%;
 const MainCountryPage = () => {
 
 
-
-
     return (
         <MainPageWrapper>
             <ContentWrapper>
                 <MainCountryWrapper>
-                    <MainCountry country='Poland'/>
+                    <MainCountry />
                 </MainCountryWrapper>
                 <CountryPreviewWrapper>
                     <CountryPreviewList />

@@ -12,7 +12,7 @@ import DeathsAndRecovered from '../charts/deathsAndRecovered';
 
 
 
-const MainCountry = ({country}) => {
+const MainCountry = () => {
 
     const [allConfirmedChart, setAllConfirmedChart] = useState([]);
     const [date, setDate] = useState(null);
@@ -23,6 +23,7 @@ const MainCountry = ({country}) => {
     const [isLoading, setIsLoading] = useState(false);
 
 
+
     const calculateIncrease = (num1, num2, precision) =>{
         return (((num1/num2)-1)*100).toFixed(precision);
     }
@@ -31,7 +32,9 @@ const MainCountry = ({country}) => {
         const fetchData = async ()=>{
             setIsLoading(true)
             const {data} = await axios.get(APIURL);
-            const mainCountry = data[country];
+
+            const mainCountry = data['Poland'];
+
 
 
             const allConfirmedChart = mainCountry.filter(el=>{
@@ -106,6 +109,7 @@ const MainCountry = ({country}) => {
         }
         fetchData();
     }, [])
+
 
 
     return (

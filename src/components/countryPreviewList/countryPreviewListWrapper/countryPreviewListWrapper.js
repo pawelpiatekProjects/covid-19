@@ -40,7 +40,7 @@ const CountryPreviewListWrapper = ({countryList, inputValue, getInputValue }) =>
                         country.name.toLowerCase().includes(inputValue.toLowerCase())
                     ))
                     .map(country => (
-                       <CountryPreview name={country.name} />
+                       <CountryPreview name={country.name} cases={country.cases}/>
                         )
                     )
                 }

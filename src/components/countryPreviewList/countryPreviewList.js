@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import Loader from '../../assets/reusable/components/loader';
 import CountryPreviewListWrapper from './countryPreviewListWrapper/countryPreviewListWrapper';
-import {Link} from 'react-router-dom';
+import {APIURL} from '../../assets/APIURL';
 
 
 //todo: add sorting by country name
@@ -16,7 +16,7 @@ const CountryPreviewList = () => {
         setIsLoading(true);
         setIsLoading(true);
         const fetch = async () => {
-            const {data} = await axios.get(`https://pomber.github.io/covid19/timeseries.json`);
+            const {data} = await axios.get(APIURL);
             const keys = Object.keys(data);
             const values = Object.values(data);
             const newArr = [];
@@ -37,10 +37,7 @@ const CountryPreviewList = () => {
     const getInputValue = e => {
         setInputValue(e.target.value);
     }
-    const onCountyClick = (id) =>{
 
-    }
-//todo: change loader
     return (
         <>
             {isLoading ? (
