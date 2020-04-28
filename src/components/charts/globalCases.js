@@ -6,6 +6,14 @@ import * as variables from "../../assets/styles/variables";
 const GlobalCasesWrapper = styled.div`
 background-color: ${variables.white};
 padding: 5rem;
+
+@media(max-width: 500px){
+padding: 5rem 2rem;
+}
+
+@media(max-width: 350px){
+padding: 3rem 1rem;
+}
 `;
 
 const ChartWrapper = styled.div`

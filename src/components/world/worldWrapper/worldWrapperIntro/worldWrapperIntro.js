@@ -6,18 +6,27 @@ import Loader from '../../../../assets/reusable/components/loader';
 
 
 const Wrapper = styled.div`
-display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: max-content;
-    grid-gap: 5rem;
-    margin: 5rem auto;
+ display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(1,max-content);
+  grid-gap: 2.5rem;
+  
+  @media(max-width: 600px){
+  grid-template-rows: repeat(3, max-content);
+  grid-template-columns: 1fr;
+  }
    
+   margin-bottom: 5rem;
 `;
 
 const Cell = styled.div`
-  grid-column: ${props => props.start} / span 1;
-  background-color: ${variables.white};
-   padding: 3rem;
+  background: ${variables.white};
+  grid-column: ${props => props.start}/${props => props.end};
+  
+  @media(max-width: 600px){
+  grid-column: 1/-1;
+  }
+  padding: 2rem;
 `;
 
 const CellHeader = styled.p`
@@ -30,41 +39,55 @@ font-weight: 500;
 
 `;
 
+const CellContent = styled.div`
+@media(max-width: 900px){
+  display: none;
+  }
+`;
+
 const WorldWrapperIntro = ({lastDayConfirmed, lastDayDeaths, lastDatRecovered, data}) => {
 
 
-        return (
-            <Wrapper>
-                <Cell start={1}>
-                    <CellHeader>Potwierdzone przypadki: <span>{lastDayConfirmed}</span></CellHeader>
+    return (
+        <Wrapper>
+            <Cell start={1} end={2}>
+                <CellHeader>Potwierdzone przypadki: <span>{lastDayConfirmed}</span></CellHeader>
+                <CellContent>
                     {data.length > 0 ? <SmallChart
                         height="10"
                         data={data}
                         dataKey="confirmed"
                         color={variables.primaryBlue}/> : <Loader/>}
+                </CellContent>
 
-                </Cell>
-                <Cell start={2}>
-                    <CellHeader>Zgony: <span>{lastDayDeaths}</span></CellHeader>
+                {/*fix charts to responsive*/}
+            </Cell>
+            <Cell start={2} end={3}>
+                <CellHeader>Zgony: <span>{lastDayDeaths}</span></CellHeader>
+                <CellContent>
                     {data.length > 0 ? <SmallChart
                         height="10"
                         data={data}
                         dataKey="deaths"
                         color={variables.red1}
                     /> : <Loader/>}
-                </Cell>
-                <Cell start={3}>
-                    <CellHeader>Wyleczoni: <span>{lastDatRecovered}</span></CellHeader>
+                </CellContent>
+
+            </Cell>
+            <Cell start={3} end={-1}>
+                <CellHeader>Wyleczoni: <span>{lastDatRecovered}</span></CellHeader>
+                <CellContent>
                     {data.length > 0 ? <SmallChart
                         height="10"
                         data={data}
                         dataKey="recovered"
                         color={variables.green1}
                     /> : <Loader/>}
-                </Cell>
-            </Wrapper>
-        )
+                </CellContent>
 
+            </Cell>
+        </Wrapper>
+    )
 
 
 };
