@@ -1,68 +1,152 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 
-## Available Scripts
+<h2 align="center">
+ Junior JS Developer task
+</h2>
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<h4>Demo screenshots</h4>
 
-### `npm test`
+![Image description](./src/assets/img/screen1.PNG)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Image description](./src/assets/img/screen2.PNG)
 
-### `npm run build`
+![Image description](./src/assets/img/screen3.PNG)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Image description](./src/assets/img/screen4.PNG)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+![Image description](./src/assets/img/screen5.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![Image description](./src/assets/img/screen6.PNG)
 
-### `npm run eject`
+![Image description](./src/assets/img/screen7.PNG)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Image description](./src/assets/img/screen8.PNG)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+***
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+[Deployed App](https://distracted-wozniak-773de7.netlify.app/)
+***
 
-### Code Splitting
+<h4>Project description</h4>
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
 
-### Analyzing the Bundle Size
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+This project is a React application. This app uses styled components for styling. 
+For managing state and async actions I used react hooks (useState, useEffect).
+For fetching data from API I used [axios](https://github.com/axios/axios). 
 
-### Making a Progressive Web App
+ Application's logic is divided into several files. App.js is a root file. Another 
+ components are nested in this component. When we open this app the companies list is presented.
+ All data from ["https://recruitment.hal.skygate.io/companies"](https://recruitment.hal.skygate.io/companies)
+ are fetched before component is mounted to DOM. After fetching data from `/companies` another axios get request
+  from [https://recruitment.hal.skygate.io/incomes/](https://recruitment.hal.skygate.io/incomes/) for each company is made.
+   Data from `/incomes` are spread in companies array from `/companies`.
+ 
+ We can search through the table by company name using input above the table. 
+ When we started typing company name the companies list is being filtered.
+ 
+ App provides sorting by selected criteria. By default companies list isn't sorted. When we 
+ click on selected header (total income, average income, last month income) companies list
+ is sorted and the structure of companies presented in companies list is changing. When we
+ first click on selected header the companies list is sorting ascending by selected criteria.
+ After second click the companies list is sorting descending.
+ 
+ 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+ 
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+***
+<h4>Technologies</h4>
 
-### Deployment
+1. ReactJs
+2. Styled Components
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+***
+<h4>Develop project</h4>
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+1.  **Start developing.**
+
+    Navigate into your new site’s directory and start it up.
+
+    ```shell
+    cd skygate/
+    npm start
+    ```
+
+1.  **Open the source code and start editing**
+
+    App is now running at `http://localhost:3000/`
+
+    
+    
+  ***
+
+<h4>Project structure</h4>
+
+A quick look at the top-level files and directories you'll see in a Gatsby project.
+
+   
+    ├── src
+        ├── assets
+            ├── images
+            ├── colors.js
+            ├── globalStyles.js
+        ├── components
+            ├── companiesList
+                ├── companiesList.js
+                ├── companyPreview
+                    ├── companyPreview.js
+            ├── loadingAnimation
+                ├── loadingAnimation.js
+            ├── paginationButtons
+                ├── paginationButtons.js
+            ├── UIComponents
+                ├── Button.js
+        
+ 
+  **`/src`**: This directory will contains all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+
+   **`/assets`**: This directory contains all assets including global styles and images.
+   
+   **`/images`**: This directory contains all images which are used in README.md.
+   
+   **`color.js`**: This file contains color variables which are used in project.
+   
+   **`globalStyles.js`**: This file contains styled-components global style component which defines global styles in the app.
+    
+   **`/components`**: This directory will contain components
+    
+   **`/companiesList`**: This directory contains **`/companyPreview`** directory and **`companiesList.js`** file. 
+    
+   **`companiesList.js`**: This file contains table in which all companies are presented. It also contains all whole logic connected to fetching and managing data from [https://recruitment.hal.skygate.io/companies]("https://recruitment.hal.skygate.io/companies")
+    
+  **`/companyPreview`**: This directory contains **`companyPreview.js`** file.
+  
+  **`companyPreview.js`**: This file is a react component which is a single row in
+  table from **`companiesList.js`** file. This component presents id, name, city,
+  total income, average income and last month income of selected company. 
+
+
+  **`/loadingAnimation`**: This directory contains **`loadingAnimation.js`** file
+
+ **`loadingAnimation.js`** This file contains react component which is displayed when
+ fetching data is not yet completely  fetched 
+
+ **`/paginationButtons`**: This directory contains **`paginationButtons.js`** file
+
+ **`paginationButtons.js`**: This file contains react component which is used in
+ table pagination in **`companiesList.js`**.
+ 
+ **`/UIComponents`**: This file contain **`Button.js`** file and should contains 
+ in the future all reusable UI components
+
+<!-- AUTO-GENERATED-CONTENT:END -->
