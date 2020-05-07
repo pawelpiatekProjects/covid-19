@@ -7,6 +7,11 @@
 
 
 
+[Deployed App](https://distracted-wozniak-773de7.netlify.app/)
+
+[API](https://github.com/pomber/covid19)
+***
+
 <h4>Demo screenshots</h4>
 
 ![Image description](./src/assets/img/screen1.PNG)
@@ -29,12 +34,7 @@
 
 
 
-***
 
-[Deployed App](https://distracted-wozniak-773de7.netlify.app/)
-
-[API](https://github.com/pomber/covid19)
-***
 
 <h4>Project description</h4>
 
